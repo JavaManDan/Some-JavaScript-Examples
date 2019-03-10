@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task 2</title>
+	
+	<!-- The styles are used to make the page look pretty and add the functionality-->
+	<style>
+	   body{
+	   width: 100%;
+	   margin: 0 auto;
+	   font-size: 1.5vh;
+	       
+	   }
+	   
+	   #square{
+	       display: inline-block;
+	       width: 10px;
+	       height: 10px;
+	       float: left;
+	       background-color: red;
+	   }
+	   
+	   form{
+	       background-color: #c1ccdd;
+	       text-align: center;
+	       
+	       
+	   }
+	   
+	   #title{
+	       width: 100%;
+	       height: 20%;
+	       background-color: #c1ccdd;
+	       text-align: center;
+	   }
+	   
+	</style>
+	<!-- Simple script to allow the user to move the small square in the given direction-->
+	<script>
+	       //The function to move right
+	       function right(){
+		   //Get the square 
+	       var square = document.getElementById("square");
+			   //Reset the margin left 
+	           square.style.marginLeft ="0%";
+			   //Move right
+	           square.style.float ="right";
+	           
+	       }       
+	       //The function to move left
+	       function left(){
+		   //Get the square
+	       var square = document.getElementById("square");
+			   //Reset the margin left 
+	           square.style.marginLeft ="0%";
+			   //Move left
+	           square.style.float ="left";
+	       }       
+	       //The function to centre
+	       function centre(){
+		   //Get the square 
+	       var square = document.getElementById("square");  
+			   //Move left
+	           square.style.float ="left";
+			   //Centre by moving 50% left - half the size of the square
+	           square.style.marginLeft ="calc(50% - 1*5px)";
+	           
+	       }       
+	   
+	</script>
+</head>
+
+<body>
+	<!-- Instructions for the user-->
+	<div id="title">
+		<h1>Click The Controls To Move the Box in The Given Position</h1>
+	</div>
+	<!-- Form containing the radio buttons that run the JScript above-->
+	<form id="controls" name="controls">
+		<input id="Left" name="control" onclick="left();" type="radio" value="Left" checked> <label for="Left">Left</label> <input id="Centre" name="control" onclick="centre();" type="radio" value="Centre"> <label for="Centre">Centre</label> <input id="Right" name="control" onclick="right();" type="radio" value="Right"> <label for="Right">Right</label>
+	</form>
+	<!-- The moving square-->
+	<div id="square"></div>
+	
+</body>
+</html>

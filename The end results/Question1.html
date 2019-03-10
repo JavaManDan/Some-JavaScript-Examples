@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task1 Coloured Boxes</title>
+	<style>
+	<!-- Various styles for the form and the divs (color boxes) makes the page look pretty-->
+	form{
+	   padding: 15px;
+	}
+
+	div.colorBox{
+	   width: 20px;
+	   height: 20px;
+	   float: left;
+	   background-color: rgb(0,110,0);
+	   margin-left: 5px;
+	   display: inline;
+
+	   
+	}
+
+
+	</style>
+	<!-- Main Script for the document allows the program to contain the random colored boxes/ clear them upon user input-->
+	<script>
+
+	   
+
+
+	   //Function to create the boxes and color them with a random RGB color
+	   function boxCreation(){
+	   //Canvas cleared remove all previous traces of color boxes
+	   document.getElementById("canvas").innerHTML = "";
+	   //Quantity var intial value later upon execution
+	   var quantity = 0;
+	   //How much should the box margin left
+	   var left = 5;
+	   
+	   //Form input / quantity set to that number value
+	   var input = document.getElementById("inputs");
+	   quantity = input.elements["amount"].value;
+	   
+	   
+	   //Simple for loop to start at 0 ,incremnet until its quantity - 1 (Could also be done using i = 1 and <= quantity)
+	   for(var i = 0; i < quantity; i++){
+			//Random colors used later (random upon every execution of the loop, results in different values 0-255 each time the loop runs
+	       var colour1 = Math.floor(Math.random() * 256);
+	       var colour2 = Math.floor(Math.random() * 256);
+	       var colour3 = Math.floor(Math.random() * 256);
+	       
+	       //Get the canvas 
+	       var box = document.getElementById("canvas");
+	       
+	       //Create the next box assign the class colorBox (keeps that set of CSS styles)
+	       var next = document.createElement("div");
+	       next.className = "colorBox";
+		   //Assign the RGB color values from before
+	       next.style.background = "rgb(" + colour1 +"," + colour2 +"," + colour3 +")";
+		   //Margin left by the specific amount (double the previous margin-left) in px measurement
+	       next.style.marginLeft = ""+ left +"px";
+	       left = left * 2;
+	       //Make it visible to the canvas / user
+	       canvas.appendChild(next);
+	       
+	       
+	   }
+	}
+
+	</script>
+</head>
+<body>
+	<!-- Added some paragrapghs to explain how to enter the input for amount of the colored boxes -->
+	<h1>Create Boxes With Double the Previous Margin:</h1>
+	<p>Type the amount of boxes you want to add to the page by entering in the input and clicking Add.</p>
+	<!-- Form inout containing a Add button which runs the JScript and an input text box-->
+	<form id="inputs" name="inputs">
+		<input name="amount" type="text"> <input onclick="boxCreation();" type="button" value="Add">
+	</form>
+	</br>
+	<div id="canvas"></div>
+</body>
+</html>
