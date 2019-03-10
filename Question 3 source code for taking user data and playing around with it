@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task 3</title>
+	<!-- Style for the document adding extra details for user benefit -->
+	<style>
+	   form{
+	       border: solid 1px black;
+	       width: 850px;
+	       height: 120px;
+	       padding: 5px;
+	       background:linear-gradient(to bottom,#10408c,#fcfdff);
+	   }
+	   
+	   input{
+	       margin-top: 10px;
+	   }
+	   
+	   .button{
+	       width: 100px;
+	       height: 50px;
+	       margin-top: 2%;
+	       margin-left: 25%;
+	   }
+	</style>
+	<!-- Functions that allow display to keep adding the user inputs -->
+	<script>
+	   var firstName = "";
+	   var lastName = "";
+	   var dateOfBirth = "";
+	   var eyeColour= "";
+	   
+	   function Display()
+	   {
+	       //Input of the form
+	       var input = document.getElementById("input");
+	       //First name value
+	       firstName = input.elements["first_name"].value;
+	       //Last name value
+	       lastName = input.elements["last_name"].value;
+	       //Date of birth value
+	       dateOfBirth = input.elements["dob"].value;
+	       //Eye colour value
+	       eyeColour = input.elements["colour"].value;
+	       
+	       
+	       //The summary paragraph for all the values above...added to the body (keep old inputs)
+	       document.body.innerHTML +=  firstName + " " + lastName + ", was born " + dateOfBirth +  " and has an eye colour of " + eyeColour +"." +"<\/br>";
+	       
+	   
+	   }
+	   
+	   function Reset()
+	   {
+	       //Reset the current fields and allow user to re-enter the details
+		   document.getElementById("input").reset();
+	   }
+	    
+	</script>
+</head>
+
+<body>
+	<!-- Form to get user input for the given fields-->
+	<form id="input" name="input">
+		First Name: <input name="first_name" type="text"> Last Name: <input name="last_name" type="text"> DOB: <input max="2018-02-28" min="1890-01-01" name="dob" type="date"> Eye Colour: <select name="colour">
+			<option value="Blue">
+				Blue
+			</option>
+			<option value="Brown">
+				Brown
+			</option>
+			<option value="Green">
+				Green
+			</option>
+			<option value="Grey">
+				Grey
+			</option>
+			<option value="Other">
+				Other
+			</option>
+		</select> 
+		 <!-- The button for display and reset fucntionality---->
+		 <input class="button" onclick="Display();" type="button" value="Display"> <input class="button" onclick="Reset();" type="button" value="Reset">
+	</form>
+</body>
+</html>
